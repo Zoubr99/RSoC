@@ -75,8 +75,8 @@ module mmio_sys
     .tx(tx),
     .rx(rx)
     );
-   //assign rd_data_array[1] = 32'h00000000;
 
+   //assign rd_data_array[1] = 32'h00000000;
    // slot 2: gpo 
    gpo #(.W(N_LED)) gpo_slot2 
    (.clk(clk),
@@ -89,6 +89,7 @@ module mmio_sys
     .wr_data(wr_data_array[`S2_LED]),
     .dout(led)
     );
+
 
    // slot 3: gpi 
    gpi #(.W(N_SW)) gpi_slot3 

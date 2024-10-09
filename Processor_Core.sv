@@ -429,6 +429,8 @@ reg Branch;
 
   assign MEM_Wmask = {4{(state == STORE)}} & Store_mask;
 
+  wire c010 = (LoadNstore_addr[31:24] == 8'b11000000 )? 1 : 0;
+  //wire c010 = (LoadNstore_addr == 32'hc000_0000 )? 1 : 0;
   // assigning the count to the leds
   //assign LEDS = (isSYSTEM) ? 16 : {PC[0],isALUimm,isStore,isLoad,isALUreg};
  //assign TXD = 1'b0;

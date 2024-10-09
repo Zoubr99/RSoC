@@ -45,10 +45,10 @@ module mcs_bridge
    // address translation and decoding
    //  2 LSBs are "00" due to word alignment
    assign word_addr = io_address[31:2];
-
+   //assign word_addr = io_address[29:0];
    //this bit is not clear !!!!!
    assign mcs_bridge_en = (io_address[31:24] == BRG_BASE[31:24]);
-
+	//assign mcs_bridge_en =  ((io_address[31] && io_address[30]) == 1) & ((io_address[29:28]) == 0) ;
 
    assign b_video_cs = (mcs_bridge_en && io_address[23] == 1);
    assign b_mmio_cs = (mcs_bridge_en && io_address[23] == 0);

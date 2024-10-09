@@ -26,8 +26,8 @@ module SoC(
 
         wire [31:0] inter_RAM_dout;
         wire [29:0] inter_MEM_Waddr = inter_MEMaddr[31:2];
-        wire isIO = inter_MEMaddr[22];
-        //wire isIO = (inter_MEMaddr[31] && inter_MEMaddr[30]); // SoC
+        //wire isIO = inter_MEMaddr[22];
+        wire isIO = (inter_MEMaddr[31] && inter_MEMaddr[30]); // SoC
         wire isRAM = !isIO;
         wire inter_wMEM_en = |inter_MEM_Wmask; 
         

@@ -33,7 +33,7 @@ module SoC #(parameter BRG_BASE = 32'hc000_0000)
         wire [31:0] inter_IO_dout;
         wire [29:0] inter_MEM_Waddr = inter_MEMaddr[31:2];
         wire isIO = (inter_MEMaddr[31:24] == BRG_BASE[31:24]); // SoC
-	wire isIOtest = (inter_MEMaddr[31:24] == BRG_BASE[31:24])? 1 : 0; // SoC
+	//wire isIO = (((inter_MEMaddr[31] && inter_MEMaddr[30]) == 1) & ((inter_MEMaddr[29] && inter_MEMaddr[28]) == 0));
         wire isRAM = !isIO;
         wire inter_wMEM_en = |inter_MEM_Wmask; 
 
@@ -80,7 +80,7 @@ module SoC #(parameter BRG_BASE = 32'hc000_0000)
     .io_read_data(inter_IO_dout),
     .io_read_strobe(isIO & inter_rMEMenable),
     .io_write_data(inter_MEM_Wdata),
-    .io_write_strobe(isIO & inter_wMEM_en),
+    .io_write_strobe(isIO),
     
     //mmio bit signals
     .b_video_cs(),
